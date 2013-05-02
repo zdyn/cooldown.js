@@ -69,7 +69,7 @@
         this.stop();
         this.duration = this.remainingTime = duration;
 
-        if (typeof this.duration !== "number" || this.duration < 0) {
+        if (!(typeof this.duration === "number" && this.duration >= 0)) {
           throw new SyntaxError("Invalid [duration]");
         }
 
