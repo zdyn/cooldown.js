@@ -137,7 +137,7 @@
         this.interval = setInterval(function() {
           _this._tick.apply(_this);
         }, this.tickFrequency);
-        this.find("svg")[0].unpauseAnimations();
+        this.svgElement.unpauseAnimations();
       }
     }, defaults, options);
     this._init();
