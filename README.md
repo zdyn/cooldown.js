@@ -2,6 +2,8 @@
 
 A jQuery plugin that displays a circular timer.
 
+[View the demo page](http://zdyn.github.io/cooldown.js)
+
 ## Prerequisites
 
 jQuery (tested in 2+)
