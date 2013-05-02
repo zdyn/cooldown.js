@@ -69,7 +69,7 @@
         this.stop();
         this.duration = this.remainingTime = duration;
 
-        if (typeof this.duration !== "number" || this.duration < 0) {
+        if (!(typeof this.duration === "number" && this.duration >= 0)) {
           throw new SyntaxError("Invalid [duration]");
         }
 
@@ -137,7 +137,7 @@
         this.interval = setInterval(function() {
           _this._tick.apply(_this);
         }, this.tickFrequency);
-        this.find("svg")[0].unpauseAnimations();
+        this.svgElement.unpauseAnimations();
       }
     }, defaults, options);
     this._init();
