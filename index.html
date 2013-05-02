@@ -3,10 +3,110 @@
   <head>
     <title>Cooldown.js</title>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-    <script src="src/cooldown.js"></script>
+    <style>
+      body {
+        width: 100%;
+        margin: 0;
+        padding: 20px 0;
+        font: normal normal 12px/20px "Helvetica Neue", Arial, sans-serif;
+      }
+      div {
+        position: relative;
+        margin: 0 auto;
+      }
+      input[type=text] {
+        height: 18px;
+        padding: 8px;
+        font-size: 16px;
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        background: #fff;
+        border: 1px solid #bbb;
+        outline: none;
+        box-shadow: inset 0 1px 1px #ddd;
+      }
+      input[type=text]:focus {
+        border-color: #4d90fe;
+        box-shadow: inset 0 1px 1px #bbb;
+      }
+      ::-webkit-input-placeholder {
+        color: #bbb;
+      }
+      ::-moz-placeholder {
+        color: #bbb;
+      }
+      a.button {
+        display: inline-block;
+        position: relative;
+        height: 20px;
+        padding: 4px 20px;
+        font-size: 14px;
+        line-height: 20px;
+        color: #fff;
+        text-align: center;
+        border-radius: 2px;
+        text-shadow: 0 -1px 0 #6f7c7d;
+        background: #95a5a6;
+        border: 1px solid #7f8c8d;
+        box-shadow: inset 0 1px 0 #a5b5b6, 0 1px 0 #859293, 0 6px 0 #6f7c7d, 0 6px 6px #555;
+        -webkit-user-select: none;
+      }
+      a.button:hover {
+        cursor: pointer;
+        opacity: 0.8;
+      }
+      a.button:active {
+        top: 3px;
+        box-shadow: inset 0 1px 0 #a5b5b6, 0 1px 0 #859293, 0 3px 0 #6f7c7d, 0 3px 6px #555;
+      }
+      #input {
+        text-align: center;
+      }
+      #input > * {
+        display: inline-block;
+        vertical-align: top;
+      }
+      #input > input {
+        width: 70px;
+      }
+      #input > a {
+        margin-left: 10px;
+      }
+      #cooldown {
+        clear: both;
+        width: 300px;
+        height: 300px;
+        margin-top: 20px;
+      }
+    </style>
   </head>
   <body>
+    <div id="input">
+      <input id="duration" type="text" placeholder="Duration" value="20" />
+      <a id="start" class="button">Start</a>
+      <a id="stop" class="button">Stop</a>
+      <a id="pause" class="button">Pause</a>
+      <a id="resume" class="button">Resume</a>
+    </div>
+    <div id="cooldown">
 
+    </div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="src/cooldown.js"></script>
+    <script>
+      (function() {
+        var cooldown = $("#cooldown").cooldown({
+          arcWidth: 20,
+          arcColor: "#3498db"
+        });
+
+        document.getElementById("start").onclick = function() {
+          cooldown.start(parseInt(document.getElementById("duration").value, 10));
+        };
+        document.getElementById("stop").onclick = cooldown.stop;
+        document.getElementById("pause").onclick = cooldown.pause;
+        document.getElementById("resume").onclick = cooldown.resume;
+      })();
+    </script>
   </body>
 </html>
