@@ -4,13 +4,16 @@ A jQuery plugin that displays a circular timer.
 
 [View the demo page](http://zdyn.github.io/cooldown.js)
 
+3.14 KB minified  
+1.15 KB minified and gzipped
+
 ## Prerequisites
 
-jQuery (tested in 2+)
+jQuery (tested in 2+, but probably works in most versions)
 
 ## Supported browsers
 
-Chrome (tested in 26+)
+* Chrome (tested in 26+)
 
 ## Usage
 
@@ -38,8 +41,8 @@ Override the default options by passing in an object of key-value pairs when ini
 
 ```javascript
 var cooldown = $("#some-div").cooldown({
-  tickFrequency:      100,       // Frequency of ticks (milliseconds), not recommended <50, only affects
-                                 // countdown
+  tickFrequency:      100,       // Frequency of ticks (milliseconds), not recommended <50, only
+                                 // affects countdown
   arcWidth:           10,        // Arc stroke width
   arcColor:           "#27ae60", // Arc stroke color
   arcBackgroundColor: "#d7d8d9", // Arc stroke unfinished color
