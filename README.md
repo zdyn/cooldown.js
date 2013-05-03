@@ -38,8 +38,8 @@ Override the default options by passing in an object of key-value pairs when ini
 
 ```javascript
 var cooldown = $("#some-div").cooldown({
-  tickFrequency:      100,       // Frequency of ticks (milliseconds), not recommended <50, only affects
-                                 // countdown
+  tickFrequency:      100,       // Frequency of ticks (milliseconds), not recommended <50, only
+                                 // affects countdown
   arcWidth:           10,        // Arc stroke width
   arcColor:           "#27ae60", // Arc stroke color
   arcBackgroundColor: "#d7d8d9", // Arc stroke unfinished color
