@@ -56,10 +56,19 @@
 
         return this;
       },
-      _haltCooldown: function() {
-        clearInterval(this.interval);
-        if (this.svgElement) {
-          this.svgElement.pauseAnimations();
+      _setActive: function(active) {
+        if (active) {
+          this.interval = setInterval(function() {
+            _this._tick.apply(_this);
+          }, this.tickFrequency);
+          if (this.svgElement) {
+            this.svgElement.unpauseAnimations();
+          }
+        } else {
+          clearInterval(this.interval);
+          if (this.svgElement) {
+            this.svgElement.pauseAnimations();
+          }
         }
 
         return this;
@@ -118,14 +127,14 @@
       },
       stop: function() {
         this.state = STATE.STOPPED;
-        this._haltCooldown().empty();
+        this._setActive(false).empty();
       },
       pause: function() {
         if (this.state !== STATE.PLAYING) {
           return;
         }
         this.state = STATE.PAUSED;
-        this._haltCooldown()._tick();
+        this._setActive(false)._tick();
         this.duration = this.remainingTime;
       },
       resume: function() {
@@ -134,10 +143,7 @@
         }
         this.state = STATE.PLAYING;
         this.timePing = new Date();
-        this.interval = setInterval(function() {
-          _this._tick.apply(_this);
-        }, this.tickFrequency);
-        this.svgElement.unpauseAnimations();
+        this._setActive(true);
       }
     }, defaults, options);
     this._init();
