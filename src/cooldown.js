@@ -136,7 +136,7 @@
                 "<animate attributeName='stroke-opacity' from='1' to='1' ",
                     "begin='", this.introDuration / 1000, "' dur='indefinite' />",
               "</path>",
-            "</svg>",
+            "</svg>"
           ].join(""));
           this.svgElement = this.find("svg")[0];
         } else {
