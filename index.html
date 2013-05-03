@@ -101,7 +101,7 @@
         });
 
         document.getElementById("start").onclick = function() {
-          cooldown.start(parseFloat(document.getElementById("duration").value));
+          cooldown.start(parseInt(document.getElementById("duration").value, 10));
         };
         document.getElementById("stop").onclick = cooldown.stop;
         document.getElementById("pause").onclick = cooldown.pause;

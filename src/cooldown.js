@@ -1,12 +1,12 @@
 ;(function($) {
   var defaults = {
-    tickFrequency: 100,
-    arcWidth: 10,
-    arcColor: "#27ae60",
-    arcBackgroundColor: "#d7d8d9",
-    toFixed: 1,
+    tickFrequency: 100, // Milliseconds between ticks, not recommended to be <50
+    arcWidth: 10, // Arc stroke width
+    arcColor: "#27ae60", // Arc stroke color
+    arcBackgroundColor: "#d7d8d9", // Arc stroke unfinished color
+    toFixed: 1, // Number of decimal places to show
     introDuration: 500,
-    completeFn: null
+    completeFn: null // Callback function called when cooldown completes
   };
   var STATE = {
     PLAYING: "playing",
@@ -25,6 +25,15 @@
 
     var _this = this;
     $.extend(this, {
+      // Properties (all private)
+      sideLength: null,
+      duration: null,
+      remainingTime: null,
+      interval: null,
+      timePing: null,
+      state: STATE.STOPPED,
+      svgElement: null,
+      remainingTimeElement: null,
       // Private methods, chainable
       _init: function() {
         // TODO: Validate options
@@ -78,6 +87,7 @@
             "a", radius, radius, 0, 1, 0, 0.01, 0].join(" ");
         var circumference = Math.ceil(Math.PI * (this.sideLength - this.arcWidth));
 
+        // TODO: Move the hardcoded dur/begin values to a constant or configurable option
         this.css("position", "relative").html([
           "<svg style='position: absolute; top: 0; left: 0;'",
               "width='", this.sideLength, "' height='", this.sideLength, "'>",
