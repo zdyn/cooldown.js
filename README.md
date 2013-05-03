@@ -6,11 +6,12 @@ A jQuery plugin that displays a circular timer.
 
 ## Prerequisites
 
-jQuery (tested in 2+)
+jQuery (tested in 2+, but probably works in most versions)
 
 ## Supported browsers
 
 Chrome (tested in 26+)
+Firefox (tested in 20+)
 
 ## Usage
 
