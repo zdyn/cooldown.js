@@ -13,9 +13,12 @@ jQuery (tested in 2+, but probably works in most versions)
 
 ## Supported browsers
 
-* Chrome (tested in 26+)
-* Firefox (tested in 20+)
-* Safari (tested in 6+)
+* Chrome 26+
+* Firefox 20+
+* Safari 6+
+* IE 9+
+
+These are only the browsers/versions that I've tested. Older browsers may be supported.
 
 ## Usage
 
