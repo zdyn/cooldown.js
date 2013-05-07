@@ -14,6 +14,7 @@
       textAlign: "center",
       fontSize: "16px"
     },
+    countdownFn: null,
     completeFn: null
   };
   var STATE = {
@@ -59,7 +60,8 @@
             this.completeFn();
           }
         }
-        this.remainingTimeElement.html(this.remainingTime.toFixed(this.toFixed));
+        this.remainingTimeElement.html(this.countdownFn ?
+            this.countdownFn(this.remainingTime) : this.remainingTime.toFixed(this.toFixed));
 
         if (!SVG_SUPPORT) {
           var angle = Math.PI / -2 + (1 - this.remainingTime / this.duration) * 2 * Math.PI;
