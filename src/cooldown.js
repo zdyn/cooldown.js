@@ -155,6 +155,22 @@
         ].join(""));
         this.remainingTimeElement = this.find(".remaining-time").css(this.countdownCss);
 
+        var introTimePing = new Date();
+        var introInterval = setInterval(function() {
+          var progress = (new Date() - introTimePing) / _this.introDuration;
+          if (progress > 1) {
+            clearInterval(introInterval);
+            return;
+          }
+          _this.canvasElement.width = _this.canvasElement.width;
+          _this.context.lineWidth = _this.arcWidth;
+          _this.context.strokeStyle = _this.arcBackgroundColor;
+          _this.context.beginPath();
+          _this.context.arc(_this.sideLength / 2, _this.sideLength / 2,
+              _this.sideLength / 2 - _this.arcWidth / 2, Math.PI / -2, Math.PI / -2 + 2 * Math.PI * progress);
+          _this.context.stroke();
+        }, this.tickFrequency);
+
         setTimeout(function() {
           _this.state = STATE.PAUSED;
           _this.remainingTimeElement.html(_this.duration.toFixed(_this.toFixed));
