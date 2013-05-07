@@ -4,8 +4,8 @@ A jQuery plugin that displays a circular timer.
 
 [View the demo page](http://zdyn.github.io/cooldown.js)
 
-3.96 KB minified  
-1.41 KB minified and gzipped
+4.4 KB minified  
+1.5 KB minified and gzipped
 
 ## Prerequisites
 
@@ -62,6 +62,8 @@ var cooldown = $("#some-div").cooldown({
                         fontSize: "16px"
                       },
   completeFn:         null       // Callback function called when cooldown expires
+  countdownFn:        null       // Can be used to override how the countdown is displayed, is passed
+                                 // the remaining time in seconds
 });
 ```
 
