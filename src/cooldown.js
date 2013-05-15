@@ -148,28 +148,28 @@
           ].join(""));
           this.canvasElement = this.find("canvas")[0];
           this.context = this.canvasElement.getContext("2d");
+
+          var introTimePing = new Date();
+          var introInterval = setInterval(function() {
+            var progress = (new Date() - introTimePing) / _this.introDuration;
+            if (progress > 1) {
+              clearInterval(introInterval);
+              return;
+            }
+            _this.canvasElement.width = _this.canvasElement.width;
+            _this.context.lineWidth = _this.arcWidth;
+            _this.context.strokeStyle = _this.arcBackgroundColor;
+            _this.context.beginPath();
+            _this.context.arc(_this.sideLength / 2, _this.sideLength / 2,
+                _this.sideLength / 2 - _this.arcWidth / 2, Math.PI / -2, Math.PI / -2 + 2 * Math.PI * progress);
+            _this.context.stroke();
+          }, this.tickFrequency);
         }
 
         this.css("position", "relative").append([
           "<div class='remaining-time' style='line-height: ", this.sideLength, "px;'></div>"
         ].join(""));
         this.remainingTimeElement = this.find(".remaining-time").css(this.countdownCss);
-
-        var introTimePing = new Date();
-        var introInterval = setInterval(function() {
-          var progress = (new Date() - introTimePing) / _this.introDuration;
-          if (progress > 1) {
-            clearInterval(introInterval);
-            return;
-          }
-          _this.canvasElement.width = _this.canvasElement.width;
-          _this.context.lineWidth = _this.arcWidth;
-          _this.context.strokeStyle = _this.arcBackgroundColor;
-          _this.context.beginPath();
-          _this.context.arc(_this.sideLength / 2, _this.sideLength / 2,
-              _this.sideLength / 2 - _this.arcWidth / 2, Math.PI / -2, Math.PI / -2 + 2 * Math.PI * progress);
-          _this.context.stroke();
-        }, this.tickFrequency);
 
         setTimeout(function() {
           _this.state = STATE.PAUSED;
